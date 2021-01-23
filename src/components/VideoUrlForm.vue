@@ -35,12 +35,12 @@
 		},
 		methods: {
 			async handleConversion () {
-				this.loading = true;
+				this.loading = true
 				const media_type = this.$store.state.media_type
 				const payload = { media_type, youtube_url: this.$store.state.youtube_url }
-				const video_url = 'http://localhost:4000/convert'
-				const { data } = await axios.post(video_url, payload);
-				this.loading = false;
+				const video_url = 'https://youtubeserver100.herokuapp.com/convert'
+				const { data } = await axios.post(video_url, payload)
+				this.loading = false
 				this.$store.state.type = data.type
 				this.$store.state.youtube_url = ''
 			}
