@@ -17,7 +17,7 @@
 		},
 		computed: {
 			download_url () {
-				return 'http://localhost:4000/download?type=' + this.$store.state.file_type
+				return 'https://youtubeserver100.herokuapp.com/download?type=' + this.$store.state.file_type
 			},
 		},
 	}

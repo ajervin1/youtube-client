@@ -30,7 +30,7 @@ const store = new Vuex.Store({
 			
 		},
 		async uploadVideo (state) {
-			const url = 'http://localhost:4000/convert'
+			const url = 'https://youtubeserver100.herokuapp.com/convert'
 			const options = { media_type: state.media_type, youtube_url: state.youtube_url }
 			state.loading = true
 			const { data } = await axios.post(url, options)
