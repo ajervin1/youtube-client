@@ -1,12 +1,21 @@
 <template>
-	<div>
-		<button :class="{'active': $store.state.media_type == option.media}"
-		        @click="changeMedia(option.media)"
-		        class="btn btn-primary mr-3 opacity-80 shadow-sm" v-for="option in options">
-			<i :class="option.icon"></i>
-			{{option.media }}
-		</button>
-	</div>
+	<section class="media-options">
+		<nav class="nav nav-pills bg-nav-pills d-inline-flex">
+			<button class="btn nav-item nav-link shadow"
+			        :class="{'active': this.$store.state.media_type == 'video'}"
+			        @click="changeMedia('video')">
+				<i class="fa fa-video"></i>
+				MP4
+			</button>
+			<button
+					:class="{'active': this.$store.state.media_type == 'audio'}"
+					class="btn  ml-2 nav-item nav-link shadow"
+					@click="changeMedia('audio')">
+				<i class="fa fa-music"></i>
+				MP3
+			</button>
+		</nav>
+	</section>
 </template>
 
 <script>
@@ -18,14 +27,7 @@
 		name: 'MediaOptions',
 		data () {
 			return {
-				options: [
-					{
-						media: 'video', icon: 'fa fa-video mr-1'
-					},
-					{
-						media: 'audio',
-						icon: 'fa fa-music mr-1'
-					} ]
+				options: [ 'audio', 'video' ]
 			}
 		},
 		methods: {

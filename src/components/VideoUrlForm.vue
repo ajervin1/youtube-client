@@ -1,48 +1,31 @@
 <template>
-	<section class="">
-		<form @submit.prevent="handleConversion" class=" d-flex w-75 mx-auto mt-5 mb-4">
-			<input placeholder="Video URL to Download" type="search" :value="video_url"
-			       class="form-control rounded-right-0"/>
-			<button class="btn rounded-left-0 btn-primary btn-primary-1 border-0">
-				Submit
-			</button>
-		</form>
-		<div class="spinner-border text-primary" v-if="loading">
-		
+	<section class="form">
+		<div class="form-container">
+			<form @submit.prevent="handleUpload" class="d-flex">
+				<input placeholder="Youtube URL to Download" type="search" :value="video_url"
+				       class="form-control rounded-0 rounded-start"/>
+				<button class="btn btn-success btn-sm rounded-0 rounded-end">
+					Convert
+				</button>
+			</form>
 		</div>
 	</section>
 
 </template>
 
 <script>
-	/*
-	 Sends A Post Request To Convert YoutubeUrl to mp4 or mp3
-	 {youtube_url: '', media_type: ""}
-	 * */
 	import axios from 'axios'
 	
 	export default {
 		name: 'VideoUrlForm',
-		data () {
-			return {
-				loading: false
-			}
-		},
 		computed: {
 			video_url () {
 				return this.$store.state.youtube_url
 			}
 		},
 		methods: {
-			async handleConversion () {
-				this.loading = true
-				const media_type = this.$store.state.media_type
-				const payload = { media_type, youtube_url: this.$store.state.youtube_url }
-				const video_url = 'https://youtubeserver100.herokuapp.com/convert'
-				const { data } = await axios.post(video_url, payload)
-				this.loading = false
-				this.$store.state.type = data.type
-				this.$store.state.youtube_url = ''
+			async handleUpload () {
+				await this.$store.commit('uploadVideo')
 			}
 		}
 	}

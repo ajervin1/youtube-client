@@ -1,15 +1,14 @@
 <template>
-	<article class="card">
-		<iframe class="card-img-top" :src="`https://www.youtube.com/embed/${video.id.videoId}`"></iframe>
+	<article class="card shadow-lg">
+		<iframe :src="`https://www.youtube.com/embed/${video.id.videoId}`" class="card-img-top">
 		
+		</iframe>
 		<div class="card-body">
-			
-			
-			<button @click="setYoutubeUrl" class="btn btn-primary btn-sm">
+			<button @click="setYoutubeUrl" class="btn btn-accent d-block w-100">
 				Get Youtube Url
 			</button>
 		</div>
-	
+		
 	</article>
 </template>
 
@@ -35,7 +34,7 @@
 			}
 		},
 		created () {
-			console.log(this.$parent.$data)
+		
 		}
 	}
 </script>

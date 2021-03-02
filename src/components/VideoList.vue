@@ -1,9 +1,12 @@
 <template>
-	<div class="row" v-if="videos.length">
-		<div class="col-4 mb-3" v-for="video in videos">
-			<video-item :video="video"></video-item>
+	<section class="video-list">
+		<div class="row" >
+			<div class="col-4 mb-3" v-for="video in $store.state.videos">
+				<VideoItem :video="video"/>
+			</div>
 		</div>
-	</div>
+	</section>
+
 </template>
 
 <script>
@@ -12,10 +15,6 @@
 	export default {
 		name: 'VideoList',
 		components: { VideoItem },
-		computed: {
-			videos () {
-				return this.$store.state.videos
-			}
-		},
+		
 	}
 </script>
